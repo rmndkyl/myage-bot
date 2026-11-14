@@ -13,7 +13,7 @@ daily reward, spin, mystery spin, dan vault — untuk banyak akun sekaligus.
 |---|---|
 | **Category** | Telegram Mini App Farming |
 | **Chain** | TON ($AGE / $GRAM) |
-| **Version** | 1.0.0 |
+| **Version** | 1.1.0 |
 | **Platform** | Python 3.11+ |
 
 ## Proof it runs
@@ -48,6 +48,12 @@ Every screenshot below is re-created from this bot's own log files and snapshot 
   dengan rapi dan dicatat.
 - **Klaim berkala** — daily reward, spin (4 jam), mystery spin (2,5 jam), vault (8 jam);
   bot hanya memanggil yang benar-benar `ready`.
+- **Bot Farm boss fight** — event boss global: setiap run bot menghabiskan semua *hit* tersimpan
+  (`POST /api/boss`, maks 10 hit per request), hit = 1 + umur akun + teman (maks +10) dan dobel
+  saat fase *rage*; bot skip otomatis saat *shield* kalau umur akun di bawah syarat, dan berhenti
+  kalau boss mati di tengah jalan. Damage per akun dicatat dan dijumlahkan di ringkasan.
+- **Achievements & age card** — semua achievement yang selesai diklaim (`POST /api/achievements`),
+  plus bonus age card sekali pakai (+1.000 AGE).
 - **Multi-akun + paralel** — pakai session Telethon yang sudah ada; dukungan `--part N/M`
   untuk membelah fleet ke beberapa proses.
 - **State & ringkasan** — poin dan GRAM per akun disimpan di `data/state*.json`, ringkasan tabel
